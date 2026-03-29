@@ -1,0 +1,172 @@
+version: 2
+sources:
+  - name: raw
+    description: Raw data loaded from NYC Open Data
+    database: marianafuturodatawarehousingw1
+    schema: nyc_311_raw_data 
+    tables:
+      - name: source_dot_service_requests_history
+        description: |
+          NYC 311 service requests for Dept of Transportation.
+          One row per service request.
+        columns:
+          - name: unique_key
+            description: Unique ID for the service request
+            tests:
+              - unique
+              - not_null
+          - name: created_date
+            description: Date and time the request was created
+          - name: closed_date
+            description: Date and time the request was closed
+          - name: agency
+            description: Agency code
+          - name: agency_name
+            description: Full name of the agency
+          - name: complaint_type
+            description: Type of complaint
+          - name: descriptor
+            description: Further description of the complaint
+          - name: descriptor_2
+            description: Additional description of the complaint
+          - name: location_type
+            description: Location where the incident occurred
+          - name: incident_zip
+            description: Zip code of the incident location
+          - name: incident_address
+            description: Street address of the incident
+          - name: latitude
+            description: Latitude coordinate
+          - name: longitude
+            description: Longitude coordinate
+          - name: address_type
+            description: 'Type of address (e.g., ADDRESS, INTERSECTION, BLOCKFACE)'
+          - name: bbl
+            description: Borough Block and Lot number (NYC tax lot id)
+          - name: borough
+            description: NYC borough where incident occurred
+          - name: bridge_highway_direction
+            description: Direction on bridge or highway (e.g. Northbound)
+          - name: bridge_highway_name
+            description: Name of bridge or highway where incident occurred
+          - name: bridge_highway_segment
+            description: Specific segment of bridge or highway
+          - name: city
+            description: City name where incident occurred
+          - name: community_board
+            description: NYC Community Board district number
+          - name: cross_street_1
+            description: First cross street near incident location
+          - name: cross_street_2
+            description: Second cross street near incident location
+          - name: due_date
+            description: Expected due date for request resolution
+          - name: facility_type
+            description: Type of facility where incident occurred
+          - name: intersection_street_1
+            description: First street forming intersection where incident occurred
+          - name: intersection_street_2
+            description: Second street forming intersection where incident occurred
+          - name: open_data_channel_type
+            description: How request was submitted (ONLINE, PHONE, MOBILE, etc.)
+          - name: park_borough
+            description: Borough of park where incident occurred
+          - name: park_facility_name
+            description: Name of park facility where incident occurred
+          - name: resolution_action_updated_date
+            description: Date when resolution action was last updated
+          - name: resolution_description
+            description: Description of how the request was resolved
+          - name: road_ramp
+            description: Road ramp identifier where incident occurred
+          - name: status
+            description: Current status of request (Open, Closed, In Progress, etc.)
+          - name: street_name
+            description: Name of street where incident occurred
+          - name: x_coordinate_state_plane
+            description: X coordinate in NY State Plane projection system (NAD 83)
+          - name: y_coordinate_state_plane
+            description: Y coordinate in NY State Plane projection system (NAD 83)
+          - name: landmark
+            description: Nearby landmark or point of interest
+
+version: 2
+sources:
+  - name: raw
+    description: Raw data loaded from NYC Open Data
+    database: marianafuturodatawarehousingw1
+    schema: nyc_311_raw_data 
+    tables:
+      - name: source_nyc_open_restaurant_apps
+        description: 
+          NYC open applications for outside seating in restaurants.
+          One row per application.
+        columns:
+          - name: approved_for_roadway_seating
+            description: status of roadway seating application
+          - name: approved_for_sidewalk_seating
+            description: status of sideawalk seating application
+          - name: bbl
+            description: borough block lot identifier for the property
+          - name: bin
+            description: building identification number for the property
+          - name: borough
+            description: borough where the establishment is located
+          - name: building_number
+            description: street number of the estbalishment address
+          - name: census_track
+            description: cencus tract where the establishment is located
+          - name: community_board
+            description: NYC community board district of the establishment 
+          - name: council_district
+            description: NYC city council district of the establishment 
+          - name: doing_business_as_dba
+            description: doing buisness as (DBA) name of the property
+          - name: food_service_establishment
+            description: indicates whether the business is a registered food service establishment
+          - name: globalid
+            description: unique global identifier for the record
+          - name: healthcompliance_terms
+            description: health compliance status or conditions for the establishment 
+          - name: landmark_district_or_building
+            description: indicates whether the establishment is in a landmark district or building 
+          - name: landmarkdistrict_terms
+            description: landmark-related compliance terms or restrictions 
+          - name: latitude
+            description: latitude coordinate
+          - name: legal_business_name
+            description: legal name of the business entity
+          - name: longitude
+            description: longitude coordinate
+          - name: nta
+            description: neighborhood tablulation area (NTA) code
+          - name: objectid
+            description: unique indeifier for the record within the dataset
+          - name: qualify_alcohol
+            description: indicates if the establishment is qualified to serve alcohol
+          - name: restaurant_name
+            description: name of the restaurant or establishment 
+          - name: roadway_dimensions_area
+            description: total area of proposed roadway seating
+          - name: roadway_dimensions_lenght
+            description: length of proposed roadway seating area
+          - name: roadway_dimensions_width
+            description: width of proposed roadway seating area
+          - name: seating_interest_sidewalk
+            description: indicates interest in sidewalk seating
+          - name: sidewalk_dimensions_area
+            description: total area of proposed sidewalk seating
+          - name: sidewalk_dimensions_length
+            description: length of proposed sidewalk seating area
+          - name: sidewalk_dimensions_width
+            description: width of proposed sidewalk seating area
+          - name: sla_license_type
+            description: type of State Liquor Authority (SLA) license held
+          - name: sla_serial_number
+            description: serial number of the SLA license
+          - name: street
+            description: street name of the establishment address
+          - name: time_of_submission
+            description: timestamp when the application was submitted
+          - name: zip
+            description: ZIP code of the establishment location
