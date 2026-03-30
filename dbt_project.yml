@@ -2,7 +2,7 @@ name: nyc_analytics_project
 version: '1.0'
 config-version: 2
 
-profile: nyc_analytics_profile  # must match your profiles.yml
+profile: nyc_analytics_profile  # <-- must match your profiles.yml
 
 target-path: "target"
 clean-targets:
@@ -13,4 +13,8 @@ models:
   nyc_analytics:
     assignment_work:
       staging:
-        +materialized: table
+        +materialized: table   # All staging models are tables
+      marts:
+        restaurant_applications:
+          dim_date:
+            +materialized: table  # dim_date is a table to avoid nested view errors
