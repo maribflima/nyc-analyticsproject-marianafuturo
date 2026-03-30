@@ -3,7 +3,7 @@
 WITH all_dates AS (
    -- Get dates (dates, no time included) from 311 requests
    SELECT DISTINCT CAST(created_date AS DATE) AS full_date
-   FROM {{ ref('stg_nyc_311_dot') }}
+   FROM {{ ref('stg_nyc_311_dot.sql') }}
    WHERE created_date IS NOT NULL
 
    UNION DISTINCT
