@@ -26,7 +26,7 @@ date_dimension AS (
         EXTRACT(DAY FROM full_date) AS day_of_month,
         EXTRACT(DAYOFWEEK FROM full_date) AS day_of_week,
         FORMAT_DATE('%A', full_date) AS day_name,
-        CASE WHEN EXTRACT(DAYOFWEEK FROM full_date) IN (1, 7) THEN TRUE ELSE FALSE END AS is_weekend,
+        CASE WHEN EXTRACT(DAYOFWEEK FROM full_date) IN (1,7) THEN TRUE ELSE FALSE END AS is_weekend,
         CASE
             WHEN EXTRACT(MONTH FROM full_date) >= 7 THEN EXTRACT(YEAR FROM full_date) + 1
             ELSE EXTRACT(YEAR FROM full_date)
@@ -34,5 +34,5 @@ date_dimension AS (
     FROM all_dates
 )
 
-SELECT * 
-FROM date_dimension;
+SELECT *
+FROM date_dimension
