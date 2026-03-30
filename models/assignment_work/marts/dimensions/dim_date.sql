@@ -1,5 +1,5 @@
 -- Date dimension shared by both restaurant applications and 311 requests
-
+{{ config(materialized='table') }}
 WITH all_dates AS (
 
     SELECT DISTINCT DATE(created_date) AS full_date
