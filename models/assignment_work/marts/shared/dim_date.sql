@@ -2,16 +2,16 @@
 
 WITH all_dates AS (
    -- Get dates (dates, no time included) from 311 requests
-   SELECT DISTINCT CAST(time_of_submission AS TIMESTAMP) AS submitted_at
+   SELECT DISTINCT CAST(created_date AS DATE) AS full_date
    FROM {{ ref('stg_nyc_311_dot') }}
    WHERE created_date IS NOT NULL
 
    UNION DISTINCT
 
    -- Get dates from restaurant applications
-   SELECT DISTINCT CAST(submitted_at AS DATE) AS full_date
+   SELECT DISTINCT CAST(time_of_submission AS DATE) AS full_date
    FROM {{ ref('stg_nyc_open_restaurant_apps') }}
-   WHERE submitted_at IS NOT NULL
+   WHERE time_of_submission IS NOT NULL
 ),
 
 date_dimension AS (
