@@ -12,7 +12,6 @@ cleaned AS (
         * EXCEPT (
             globalid,
             objectid,
-            time_of_submission,
             borough,
             zip,
             latitude,
@@ -27,7 +26,7 @@ cleaned AS (
         CAST(objectid AS STRING) AS object_id,
 
         -- Timestamp
-        CAST(time_of_submission AS TIMESTAMP) AS submitted_at,
+        CAST(time_of_submission AS TIMESTAMP) AS time_of_submission,
 
         -- Standardize borough
         CASE
