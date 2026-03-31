@@ -2,7 +2,7 @@
 
 WITH all_dates AS (
    -- Get dates (dates, no time included) from 311 requests
-   SELECT DISTINCT CAST(submitted_at AS DATE) AS full_date
+   SELECT DISTINCT CAST(time_of_submission AS TIMESTAMP) AS submitted_at
    FROM {{ ref('stg_nyc_311_dot') }}
    WHERE created_date IS NOT NULL
 
