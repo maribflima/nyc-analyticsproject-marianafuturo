@@ -12,6 +12,7 @@ cleaned AS (
         * EXCEPT (
             globalid,
             objectid,
+            time_of_submission,   -- ✅ ADD THIS BACK
             borough,
             zip,
             latitude,
@@ -48,7 +49,7 @@ cleaned AS (
             ELSE NULL
         END AS zip,
 
-        -- Coordinates (safe casting for messy data)
+        -- Coordinates
         SAFE_CAST(latitude AS FLOAT64) AS latitude,
         SAFE_CAST(longitude AS FLOAT64) AS longitude,
 
@@ -62,10 +63,8 @@ cleaned AS (
 
     FROM source
 
-    -- Light filtering (don’t over-filter this dataset)
     WHERE globalid IS NOT NULL
 
-    -- Deduplication (robust to missing IDs)
     QUALIFY ROW_NUMBER() OVER (
         PARTITION BY COALESCE(globalid, objectid)
         ORDER BY time_of_submission DESC
